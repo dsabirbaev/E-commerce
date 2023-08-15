@@ -1,13 +1,15 @@
 
+
+
 import "./style.scss";
 
 const index = () => {
     return (
-        <footer>
+        <section>
             <div className="container">
-                <h1>Footer</h1>
+                <h1>Register</h1>
             </div>
-        </footer>
+        </section>
     );
 };
 

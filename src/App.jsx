@@ -1,9 +1,14 @@
 
 
+import Header  from "./components/Header";
+import Layout from "./components/Layout";
+import Footer from "./components/Footer";
 const App = () => {
   return (
     <div>
-      <h1>React starter</h1>
+      <Header/>
+      <Layout/>
+      <Footer/>
     </div>
   );
 };

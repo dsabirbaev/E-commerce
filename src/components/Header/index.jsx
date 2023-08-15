@@ -4,7 +4,9 @@ import "./style.scss";
 const index = () => {
     return (
         <header>
-            <h1>Header</h1>
+            <div className="container">
+                <h1>Header</h1>
+            </div>
         </header>
     );
 };

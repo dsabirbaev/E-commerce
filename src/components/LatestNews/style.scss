@@ -1,0 +1,17 @@
+
+
+
+.latest-news_pic{
+    background-image: url(https://i.ibb.co/L1RTdYn/pexels-photo-6168061.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    transition: all 0.3s ease;
+    &:hover .latest-news_socials{
+        visibility: visible;
+    }
+}
+
+.latest-news_socials{
+    visibility: hidden;
+}

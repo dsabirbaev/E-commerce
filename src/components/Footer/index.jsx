@@ -9,10 +9,10 @@ const index = () => {
                     <div className="flex flex-col gap-y-6">
                         <img src={logo} alt="logo" />
                         <ul className="flex flex-col gap-y-3 text-[14px]">
-                            <li><a href="#" className="flex items-center gap-x-1"><span className="text-white w-[22px] h-[22px] flex items-center justify-center rounded-full bg-blue-600"><i class='bx bxl-facebook'></i></span> Facebook</a></li>
-                            <li><a href="#" className="flex items-center gap-x-1"><span className="text-white w-[22px] h-[22px] flex items-center justify-center rounded-full bg-red-600"><i class='bx bxl-youtube'></i></span> Youtube</a></li>
-                            <li><a href="#" className="flex items-center gap-x-1"><span className="text-white w-[22px] h-[22px] flex items-center justify-center rounded-full bg-sky-600"><i class='bx bxl-telegram'></i></span> Telegram</a></li>
-                            <li><a href="#" className="flex items-center gap-x-1"><span className="text-white w-[22px] h-[22px] flex items-center justify-center rounded-full bg-sky-400"><i class='bx bxl-twitter'></i></span> Twitter</a></li>
+                            <li><a href="#" className="flex items-center gap-x-1"><span className="text-white w-[22px] h-[22px] flex items-center justify-center rounded-full bg-blue-600"><i className='bx bxl-facebook'></i></span> Facebook</a></li>
+                            <li><a href="#" className="flex items-center gap-x-1"><span className="text-white w-[22px] h-[22px] flex items-center justify-center rounded-full bg-red-600"><i className='bx bxl-youtube'></i></span> Youtube</a></li>
+                            <li><a href="#" className="flex items-center gap-x-1"><span className="text-white w-[22px] h-[22px] flex items-center justify-center rounded-full bg-sky-600"><i className='bx bxl-telegram'></i></span> Telegram</a></li>
+                            <li><a href="#" className="flex items-center gap-x-1"><span className="text-white w-[22px] h-[22px] flex items-center justify-center rounded-full bg-sky-400"><i className='bx bxl-twitter'></i></span> Twitter</a></li>
                         </ul>
                     </div>
                     <ul className="text-[14px] flex flex-col gap-y-4 w-[120px]">

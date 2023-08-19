@@ -7,8 +7,8 @@ const index = () => {
     return (
         <section className="bg-green-100">
             <div className="container">
-                <Carousel >
-                    <div>
+                <Carousel autoplay>
+                    <div className="w-full">
                         <div className="carousel-intro-one flex flex-col h-[690px] justify-center">
                             <h4 className="text-[20px] text-[#334155] font-medium mb-4">In this season, find the best 🔥</h4>
                             <h1 className="w-[550px] text-[48px] text-[#0F172A] font-bold mb-8 leading-[1.2]">Exclusive collection for everyone</h1>

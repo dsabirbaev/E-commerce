@@ -15,10 +15,10 @@ const index = () => {
                         <div className="flex flex-col">
                             <div className="relative latest-news_pic w-[584px] h-[438px] border rounded-[40px] mb-[31px] cursor-pointer">
                                 <div className="latest-news_socials">
-                                    <span className="text-[18px] absolute top-[20px] right-[20px] bg-white w-[25px] h-[25px] rounded-full flex items-center justify-center"><i class='bx bxl-facebook'></i></span>
-                                    <span className="text-[18px] absolute top-[50px] right-[20px] bg-white w-[25px] h-[25px] rounded-full flex items-center justify-center"><i class='bx bxl-twitter'></i></span>
-                                    <span className="text-[18px] absolute top-[80px] right-[20px] bg-white w-[25px] h-[25px] rounded-full flex items-center justify-center"><i class='bx bxl-linkedin'></i></span>
-                                    <span className="text-[18px] absolute top-[110px] right-[20px] bg-white w-[25px] h-[25px] rounded-full flex items-center justify-center"><i class='bx bxl-instagram'></i></span>
+                                    <span className="text-[18px] absolute top-[20px] right-[20px] bg-white w-[25px] h-[25px] rounded-full flex items-center justify-center"><i className='bx bxl-facebook'></i></span>
+                                    <span className="text-[18px] absolute top-[50px] right-[20px] bg-white w-[25px] h-[25px] rounded-full flex items-center justify-center"><i className='bx bxl-twitter'></i></span>
+                                    <span className="text-[18px] absolute top-[80px] right-[20px] bg-white w-[25px] h-[25px] rounded-full flex items-center justify-center"><i className='bx bxl-linkedin'></i></span>
+                                    <span className="text-[18px] absolute top-[110px] right-[20px] bg-white w-[25px] h-[25px] rounded-full flex items-center justify-center"><i className='bx bxl-instagram'></i></span>
                                 </div>
                             </div>
                             <h4 className="cursor-pointer hover:text-blue-500 text-[24px] font-medium w-[544px] mb-[15px]">in arcu cursus euismod quis viverra nibh cras pulvinar mattis</h4>

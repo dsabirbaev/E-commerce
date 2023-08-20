@@ -2,15 +2,13 @@
 
 
 
-
-
 import "./style.scss";
 
 const index = () => {
     return (
         <section>
            <div className="container">
-                <h1>Arrivals</h1>
+                <h2>Arrivals</h2>
            </div> 
         </section>
     );

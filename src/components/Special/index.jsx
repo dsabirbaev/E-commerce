@@ -17,7 +17,7 @@ const index = () => {
     return (
         <section>
            <div className="container">
-                <div className="special-offer h-[570px] bg-[#FEFCE8]  rounded-10 flex gap-x-5">
+                <div className="special-offer h-[570px] bg-[#FEFCE8]  rounded-[50px] flex gap-x-5">
                     
                     <img className="mt-[-100px]" src="https://ciseco-reactjs.vercel.app/static/media/promo2.9278c86b3a2f01d6666e.png" alt="kid" />
                     <div className="flex flex-col items-start pt-[100px]">

@@ -5,7 +5,7 @@ import { Carousel } from 'antd';
 
 const index = () => {
     return (
-        <section className="bg-green-100">
+        <section className="bg-green-100 pt-[80px]">
             <div className="container">
                 <Carousel autoplay>
                     <div className="w-full">

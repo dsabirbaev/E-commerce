@@ -4,7 +4,7 @@ import "./style.scss";
 
 const index = () => {
     return (
-        <section>
+        <section className="pt-[100px]">
             <div className="container">
                 <div className="h-screen">
                     <h1>Women</h1>

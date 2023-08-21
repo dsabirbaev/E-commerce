@@ -2,6 +2,8 @@
 
 import "./style.scss";
 import logo from "../../assets/icons/logo.svg";
+
+import { NavLink } from "react-router-dom";
 const Navbar = () => {
     return (
         <div className="h-[80px] bg-white flex items-center">
@@ -9,12 +11,21 @@ const Navbar = () => {
                 <a href="#"><img src={logo} alt="logo" /></a>
 
                 <ul className="flex items-center gap-x-3 font-medium text-[15px]">
-                    <li className="px-[16px] py-[10px] hover:bg-slate-100 rounded-full"><a href="#">Men</a></li>
-                    <li className="px-[16px] py-[10px] hover:bg-slate-100 rounded-full"><a href="#">Women</a></li>
-                    <li className="px-[16px] py-[10px] hover:bg-slate-100 rounded-full"><a href="#">Beauty</a></li>
-                    <li className="px-[16px] py-[10px] hover:bg-slate-100 rounded-full"><a href="#">Sport</a></li>
-                    <li className="px-[16px] py-[10px] hover:bg-slate-100 rounded-full"><a href="#">Templates</a></li>
-                    <li className="px-[16px] py-[10px] hover:bg-slate-100 rounded-full"><a href="#">Explore</a></li>
+                    <li className="px-[16px] py-[10px] hover:bg-slate-100 rounded-full">
+                        <NavLink to="/men">Men</NavLink>
+                    </li>
+                    <li className="px-[16px] py-[10px] hover:bg-slate-100 rounded-full">
+                        <NavLink to="/women">Women</NavLink>
+                    </li>
+                    <li className="px-[16px] py-[10px] hover:bg-slate-100 rounded-full">
+                        <NavLink to="/kids">Kids</NavLink>
+                    </li>
+                    <li className="px-[16px] py-[10px] hover:bg-slate-100 rounded-full">
+                        <NavLink to="/about">About Us</NavLink>
+                    </li>
+                    <li className="px-[16px] py-[10px] hover:bg-slate-100 rounded-full">
+                        <NavLink to="/contact">Contact</NavLink>
+                    </li>
                 </ul>
                 <div className="flex items-center gap-x-1 cursor-pointer">
                     <span className="w-[48px] h-[48px] hover:bg-slate-100 rounded-full flex items-center justify-center"><i className='bx bx-search text-[25px]'></i></span>

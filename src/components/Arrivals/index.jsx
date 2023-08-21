@@ -1,17 +1,20 @@
 
 
-
+import React, { useEffect, useState } from "react";
 
 import "./style.scss";
 import { HeartOutlined } from '@ant-design/icons';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-
 import 'swiper/css';
 import 'swiper/css/bundle';
 
+import Card from "../UI/Card/Card";
+
 const index = () => {
+
+    const [product, setProduct] = useState([]);
     return (
         <section>
             <div className="container">

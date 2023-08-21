@@ -93,10 +93,10 @@ const index = () => {
                             </div>
                         </SwiperSlide>
                         <div className="button-next-slide w-[40px] h-[40px] absolute top-0 right-0 cursor-pointer hover:border duration-200 rounded-full flex items-center justify-center">
-                            <i class='bx bx-right-arrow-alt text-[25px]' ></i>
+                            <i className='bx bx-right-arrow-alt text-[25px]' ></i>
                         </div>
                         <div className="button-prev-slide w-[40px] h-[40px] cursor-pointer absolute top-0 right-[45px] hover:border duration-200 rounded-full flex items-center justify-center">
-                            <i class='bx bx-left-arrow-alt text-[25px]'></i>
+                            <i className='bx bx-left-arrow-alt text-[25px]'></i>
                         </div>
                     </Swiper>
 

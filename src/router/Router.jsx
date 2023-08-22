@@ -8,7 +8,12 @@ import Women from "../pages/Women";
 import Kids from "../pages/Kids";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
+
+import Login from "../pages/Login";
+import SignUp from "../pages/SignUp";
+
 import NotFound from "../pages/NotFound";
+
 
 const Router = () => {
     return (
@@ -21,6 +26,8 @@ const Router = () => {
                  <Route path="/about"  element={<About/>}/>
                  <Route path="/contact"  element={<Contact/>}/>
 
+                 <Route path="/login"  element={<Login/>}/>
+                 <Route path="/signup"  element={<SignUp/>}/>
                  <Route path="*"  element={<NotFound/>}/>
             </Routes>
         </div>

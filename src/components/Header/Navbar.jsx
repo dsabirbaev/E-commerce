@@ -4,9 +4,12 @@ import "./style.scss";
 import logo from "../../assets/icons/logo.svg";
 
 import { NavLink, Link } from "react-router-dom";
+
+import { LoginOutlined } from '@ant-design/icons';
 const Navbar = () => {
-
-
+    
+    const isAuth = localStorage.getItem("token");
+    
     return (
         <div className="h-[80px] bg-white flex items-center">
             <nav className="nav flex items-center justify-between w-full">
@@ -31,8 +34,18 @@ const Navbar = () => {
                 </ul>
                 <div className="flex items-center gap-x-1 cursor-pointer">
                     <span className="w-[48px] h-[48px] hover:bg-slate-100 rounded-full flex items-center justify-center"><i className='bx bx-search text-[25px]'></i></span>
-                    <span className="w-[48px] h-[48px] hover:bg-slate-100 rounded-full flex items-center justify-center"><i className='bx bx-user text-[25px]'></i></span>
-                    <span className="w-[48px] h-[48px] hover:bg-slate-100 rounded-full flex items-center justify-center"><i className='bx bx-cart-alt text-[25px]'></i></span>
+                    {   
+                        isAuth ? 
+                        <div className="flex gap-x-1">
+                            <span className="w-[48px] h-[48px] hover:bg-slate-100 rounded-full flex items-center justify-center"><i className='bx bx-user text-[25px]'></i></span> 
+                            <span className="w-[48px] h-[48px] hover:bg-slate-100 rounded-full flex items-center justify-center"><i className='bx bx-cart-alt text-[25px]'></i></span>
+                        </div> 
+                        
+                        : <NavLink to="/login" className="w-[48px] h-[48px] hover:bg-slate-100 rounded-full flex items-center justify-center text-[22px]"><LoginOutlined /></NavLink>  
+                    }
+                    
+                    
+                   
                 </div>
             </nav>
         </div>

@@ -13,7 +13,7 @@ const Navbar = () => {
     return (
         <div className="h-[80px] bg-white flex items-center">
             <nav className="nav flex items-center justify-between w-full">
-                <Link to="/"><img src={logo} alt="logo" /></Link>
+                <Link to="/"><img className="object-cover object-center w-[200px] h-[80px]" src={logo} alt="logo" /></Link>
 
                 <ul className="flex items-center gap-x-3 font-medium text-[15px]">
                     <li className="px-[16px] py-[10px] hover:bg-slate-100 rounded-full">

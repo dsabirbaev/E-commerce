@@ -8,9 +8,7 @@ const index = () => {
       <div className="container">
         <div className="wrapper flex items-center justify-between">
           <div className="left_side">
-            <a className="mb-[47px]" href="#">
-              <img src={Logo} alt="Logo" />
-            </a>
+           
             <h2 className="text-[60px] font-semibold leading-[72px] tracking-[-1.5px] mb-[22px]">
               Earn free money with Ciseco
             </h2>

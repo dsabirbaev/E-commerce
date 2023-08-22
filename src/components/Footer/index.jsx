@@ -1,13 +1,16 @@
 
 import "./style.scss";
 import logo from "../../assets/icons/logo.svg";
+import { Link } from "react-router-dom";
 const index = () => {
     return (
         <footer className="pt-[120px] pb-[80px] border-t-2">
             <div className="container">
                 <div className="flex justify-between">
                     <div className="flex flex-col gap-y-6">
-                        <img src={logo} alt="logo" />
+                        <Link to="/">
+                            <img className="w-[120px] h-[60px]" src={logo} alt="logo" />
+                        </Link>
                         <ul className="flex flex-col gap-y-3 text-[14px]">
                             <li><a href="#" className="flex items-center gap-x-1"><span className="text-white w-[22px] h-[22px] flex items-center justify-center rounded-full bg-blue-600"><i className='bx bxl-facebook'></i></span> Facebook</a></li>
                             <li><a href="#" className="flex items-center gap-x-1"><span className="text-white w-[22px] h-[22px] flex items-center justify-center rounded-full bg-red-600"><i className='bx bxl-youtube'></i></span> Youtube</a></li>

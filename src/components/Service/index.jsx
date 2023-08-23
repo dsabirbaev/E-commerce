@@ -7,7 +7,7 @@ import "./style.scss";
 
 const index = () => {
     return (
-        <section>
+        <section className="pt-[100px]">
             <div className="container">
                 <div className="py-[128px] flex items-center justify-between border-solid border-t-[1px] border-t-[#E2E8F0] border-b-[1px] border-b-[#E2E8F0]">
                     <div className="w-[260px] flex flex-col items-center justify-between h-[317.3px] ">

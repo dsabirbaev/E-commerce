@@ -15,7 +15,7 @@ import "./style.scss";
 
 const index = () => {
     return (
-        <section>
+        <section className="pt-[150px]">
            <div className="container">
                 <div className="special-offer h-[570px] bg-[#FEFCE8]  rounded-[50px] flex gap-x-5">
                     

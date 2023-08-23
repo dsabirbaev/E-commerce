@@ -29,8 +29,8 @@ const index = () => {
             <Arrivals/> 
             <Service/> 
             <Earn/>      
-            <Exploring/>    
-            <Trending/>  
+            {/* <Exploring/>    
+            <Trending/>   */}
             <Special/>  
             <Chosen/>  
             <Shop/>  

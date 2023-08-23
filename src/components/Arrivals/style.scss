@@ -3,3 +3,13 @@
 .arrivals-slide{
     padding-top: 50px !important; 
 }
+.arrivals-card-img{
+    transition: all 0.3s ease;
+}
+.arrivals-card-img:hover{
+
+    .size{
+        bottom: 15px;
+    }
+}
+

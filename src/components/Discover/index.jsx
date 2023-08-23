@@ -11,7 +11,7 @@ import 'swiper/css/bundle';
 
 const index = () => {
     return (
-        <section className="py-[100px]">
+        <section className="pt-[100px]">
             <div className="container">
                 <div>
                     <h2 className="text-[36px] font-semibold">Discover more. <span className="text-[#6B7280]">Good things are waiting for you</span></h2>

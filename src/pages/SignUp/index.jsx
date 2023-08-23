@@ -4,8 +4,9 @@ import { useState } from "react";
 import "./style.scss";
 import logo from "../../assets/icons/logo.svg";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 const baseURL = "http://eclo.uz:8080/api";
+
 const index = () => {
     document.title = "Eclo | Registration";
 
@@ -23,16 +24,28 @@ const index = () => {
             password: password,
           };
           const response = await axios.post(`${baseURL}/auth/register`, newUser);
-
           console.log(response.data);
         } catch (error) {
           console.log(error.message);
         }
-      }
-      const onRegister = (e) => {
+    }
+    
+    async function sendCode(number){
+        const num = number
+        console.log(typeof num)
+        
+        const response = await axios.post(`${baseURL}/auth/register/send-code`, { phone: num });
+        
+        console.log(typeof num)
+        console.log(response);
+        console.log(response.data);
+    }
+    
+    const onRegister = (e) => {
         e.preventDefault();
         registerForm();
-      };
+        sendCode(phoneNumber);
+    };
     return (
         <section className="bg-gray-50 dark:bg-gray-900">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">

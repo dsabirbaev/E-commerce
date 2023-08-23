@@ -4,7 +4,7 @@ import "./style.scss";
 
 const index = () => {
   return (
-    <section className="py-5">
+    <section className="pt-[100px]">
       <div className="container">
         <div className="wrapper flex items-center justify-between">
           <div className="left_side">

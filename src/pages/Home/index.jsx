@@ -32,7 +32,7 @@ const index = () => {
             <Exploring/>    
             <Trending/>  
             <Special/>  
-            {/* <Chosen/>   */}
+            <Chosen/>  
             <Shop/>  
             <Register/>  
             <Sellers/>  

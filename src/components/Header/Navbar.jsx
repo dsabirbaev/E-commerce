@@ -18,7 +18,7 @@ const Navbar = () => {
     };
 
     function logOut() {
-        localStorage.removeItem("token");
+        localStorage.clear();
     }
 
     const dropdownRef = useRef(null);

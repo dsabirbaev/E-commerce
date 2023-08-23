@@ -19,6 +19,8 @@ import LatestNews from "../../components/LatestNews";
 import GoodNews from "../../components/GoodNews";
 
 const index = () => {
+
+    document.title = "Eclo";
     return (
         
         <div>

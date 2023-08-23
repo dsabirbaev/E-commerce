@@ -3,3 +3,30 @@
 .nav li:has(.active){
     background-color: rgb(203 213 225);;
 }
+
+
+.user-list{
+    position: relative;
+
+    &::after{
+        content: "";
+        position: absolute;
+        top: 110%;
+        left: 0;
+        background-color: silver;
+        width: 100%;
+        height: 1px;
+        border-radius: 100%;
+    }
+
+    &::before{
+        content: "";
+        position: absolute;
+        bottom: 110%;
+        left: 0;
+        background-color: silver;
+        width: 100%;
+        height: 1px;
+        border-radius: 100%;
+    }
+}

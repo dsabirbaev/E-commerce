@@ -5,7 +5,7 @@ import "./style.scss";
 import logo from "../../assets/icons/logo.svg";
 import {Link, useNavigate} from "react-router-dom";
 
-import { LeftOutlined } from '@ant-design/icons';
+
 import axios from "axios";
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -26,12 +26,13 @@ const index = () => {
         phoneNumber: phoneNumber,
         password: password
       });
-      const token = response.data.token;
-      localStorage.setItem("token", token);
-      toast.success("Login successful!", {autoClose: 2000});
+      
+      localStorage.setItem("token", response.data.token);
+      console.log(response)
+      toast.success("Login successful!", {autoClose: 1000});
       setTimeout(() => {
         navigate("/");
-      }, 2000)
+      }, 1000)
       
     } catch (err) {
       toast.error("Login failed! Please check your account!", {autoClose: 2000});
@@ -43,16 +44,16 @@ const index = () => {
     await logInForm(); 
   }
 
-
+  document.title = "Eclo | Login"
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900 relative">
       <ToastContainer />
-      <span className="absolute top-5 left-5" title="Back home"><Link className="h-[50px] w-[50px] border-sky-600 flex items-center justify-center border rounded-full text-[25px] hover:text-sky-600 hover:shadow" to="/"><LeftOutlined /></Link></span>
+      <Link  to="/" className="absolute top-5 left-5"><button type="button" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">Back</button></Link>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+        <Link to="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <img className="w-[300px] h-8 mr-2 object-cover object-center" src={logo} alt="logo"/>
-        </a>
+        </Link>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">

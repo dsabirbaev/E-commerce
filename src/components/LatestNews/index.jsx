@@ -7,7 +7,7 @@ import user from "../../assets/images/user.png";
 
 const index = () => {
     return (
-        <section className="py-[100px] bg-[#F3F4F6B3] rounded-[40px]">
+        <section className="py-[100px] bg-[#F3F4F6B3] rounded-[40px] mt-5">
             <div className="container">
                 <div className=" flex flex-col">
                     <h2 className="text-[32px] text-[#111827] font-semibold mb-[57px]">The latest news. <span className="text-[#6B7280]">From the Ciseco blog</span></h2>

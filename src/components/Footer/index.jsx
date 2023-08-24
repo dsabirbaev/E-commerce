@@ -7,9 +7,10 @@ const index = () => {
         <footer className="pt-[120px] pb-[80px] border-t-2">
             <div className="container">
                 <div className="flex justify-between">
-                    <div className="flex flex-col gap-y-6">
+                    <div className="flex flex-col gap-y-4">
                         <Link to="/">
-                            <img className="w-[120px] h-[60px]" src={logo} alt="logo" />
+                            {/* <img className="w-[120px] h-[60px]" src={logo} alt="logo" /> */}
+                            <h2 className="text-[40px] font-bold text-blue-500">eclo</h2>
                         </Link>
                         <ul className="flex flex-col gap-y-3 text-[14px]">
                             <li><a href="#" className="flex items-center gap-x-1"><span className="text-white w-[22px] h-[22px] flex items-center justify-center rounded-full bg-blue-600"><i className='bx bxl-facebook'></i></span> Facebook</a></li>

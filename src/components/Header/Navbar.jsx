@@ -9,10 +9,13 @@ import { LoginOutlined, UserOutlined, CarryOutOutlined, HeartOutlined, BulbOutli
 import { useState, useEffect, useRef } from "react";
 
 import user from "../../assets/images/user.png";
+import axios from "axios";
+const baseURL = "http://eclo.uz:8080/api";
 const Navbar = () => {
 
     const isAuth = localStorage.getItem("token");
     const [profile, setProfile] = useState(false);
+    const [info, setInfo] = useState([]);
     const [searchInput, setSearchInput] = useState(false);
     const handleProfileToggle = () => {
         setProfile(!profile);
@@ -35,6 +38,24 @@ const Navbar = () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
+
+    async function getInfo() {
+        try{
+            const response = await axios.get(`${baseURL}/user/profile/userId`, {
+                headers: {
+                    'Authorization': `Bearer ${isAuth}`
+                }
+            })
+            setInfo(response.data);
+        }catch(error){
+            console.log(error.message);
+        }
+    }
+    useEffect(() => {
+        getInfo();
+        
+    }, [])
+    localStorage.setItem("name", info.firstName);
     return (
         <div className="h-[80px] bg-white flex items-center">
             <nav className="nav flex items-center justify-between w-full">

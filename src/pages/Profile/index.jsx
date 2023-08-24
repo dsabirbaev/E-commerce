@@ -85,7 +85,7 @@ const index = () => {
    
     document.title = `Eclo | ${data.firstName}`;
 
-    localStorage.setItem("name", data.firstName);
+ 
 
     
     return (

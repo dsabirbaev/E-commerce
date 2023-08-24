@@ -1,6 +1,6 @@
 
 import "./style.scss";
-import logo from "../../assets/icons/logo.svg";
+import logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 const index = () => {
     return (

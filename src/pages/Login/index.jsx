@@ -28,7 +28,7 @@ const index = () => {
       });
       
       localStorage.setItem("token", response.data.token);
-      console.log(response)
+      
       toast.success("Login successful!", {autoClose: 1000});
       setTimeout(() => {
         navigate("/");

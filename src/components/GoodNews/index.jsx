@@ -23,8 +23,8 @@ const index = () => {
                 <div className="flex flex-col">
 
                     <div className="flex flex-col items-center justify-center">
-                        <h2 className="text-[36px] font-semibold mb-5">Good news from far away 🥇</h2>
-                        <p className="text-[20px] text-[#6B7280] mb-10">Let's see what people think of Ciseco</p>
+                        <h2 className="text-[36px] font-semibold mb-5 dark:text-white">Good news from far away 🥇</h2>
+                        <p className="text-[20px] text-[#6B7280] mb-10 dark:text-white">Let's see what people think of Ciseco</p>
 
                         <div className="flex items-center justify-between w-[800px] mb-10">
                             <img src={user} alt="user" className="w-[60px] h-[60px] rounded-full" />
@@ -48,22 +48,22 @@ const index = () => {
                         >
                             <SwiperSlide className="flex items-center justify-center">
                                 <div className="text-center max-w-[600px] pb-10">
-                                    <p className="text-[24px] text-center mb-5 text-[#0F172A]">Great quality products, affordable prices, fast and friendly delivery. I very recommend.</p>
-                                    <h2 className="text-[24px] font-semibold mb-2">Tiana Abie</h2>
+                                    <p className="text-[24px] text-center mb-5 text-[#0F172A] dark:text-white">Great quality products, affordable prices, fast and friendly delivery. I very recommend.</p>
+                                    <h2 className="text-[24px] font-semibold mb-2 dark:text-white">Tiana Abie</h2>
                                     <Rate allowHalf defaultValue={5} />
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide className="flex items-center justify-center">
                                 <div className="text-center max-w-[600px] pb-10">
-                                    <p className="text-[24px] text-center mb-5 text-[#0F172A]">Great quality products, affordable prices, fast and friendly delivery. I very recommend.</p>
-                                    <h2 className="text-[24px] font-semibold mb-2">Tiana Abie</h2>
+                                    <p className="text-[24px] text-center mb-5 text-[#0F172A] dark:text-white">Great quality products, affordable prices, fast and friendly delivery. I very recommend.</p>
+                                    <h2 className="text-[24px] font-semibold mb-2 dark:text-white">Tiana Abie</h2>
                                     <Rate allowHalf defaultValue={5} />
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide className="flex items-center justify-center">
                                 <div className="text-center max-w-[600px] pb-10">
-                                    <p className="text-[24px] text-center mb-5 text-[#0F172A]">Great quality products, affordable prices, fast and friendly delivery. I very recommend.</p>
-                                    <h2 className="text-[24px] font-semibold mb-2">Tiana Abie</h2>
+                                    <p className="text-[24px] text-center mb-5 text-[#0F172A] dark:text-white">Great quality products, affordable prices, fast and friendly delivery. I very recommend.</p>
+                                    <h2 className="text-[24px] font-semibold mb-2 dark:text-white">Tiana Abie</h2>
                                     <Rate allowHalf defaultValue={5} />
                                 </div>
                             </SwiperSlide>

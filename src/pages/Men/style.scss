@@ -1,2 +1,25 @@
 
 
+
+
+.brand-slider{
+    position: relative;
+}
+
+.brand-slider .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    
+}
+
+.brand-slider .swiper-pagination{
+    position: absolute;
+    bottom: 0px !important;
+}
+.brand-slider .swiper-pagination-bullet-active {
+    background-color: #007bff;
+    opacity: 1;
+}

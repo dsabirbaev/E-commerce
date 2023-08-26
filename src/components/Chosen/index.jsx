@@ -26,7 +26,7 @@ const index = () => {
   return (
     <section className="pt-[100px]">
       <div className="container ">
-        <h2 className="text-black text-[36px] font-semibold ">
+        <h2 className="text-black dark:text-white text-[36px] font-semibold ">
           Chosen by our experts
         </h2>
 
@@ -41,7 +41,7 @@ const index = () => {
           className="chosen-slide"
         >
           <SwiperSlide>
-            <div className="card min-w-[400px] h-[485px] bg-white rounded-lg p-3 hover:shadow cursor-pointer">
+            <div className="card min-w-[400px] h-[485px] bg-white dark:bg-gray-700 dark:border dark:border-gray-500 rounded-lg p-3 hover:shadow cursor-pointer">
               <img className="h-[250px] w-full object-cover rounded-[16px]" src={jacket1} alt="jacket" />
               <div className="mini_imgs flex items-center justify-between  my-2">
                 <img className="h-[110px] w-[120px] rounded-[16px] object-cover" src={jacket2} alt="jacket" />
@@ -50,9 +50,9 @@ const index = () => {
               </div>
               <div className="flex items-start justify-between mt-4">
                 <div>
-                  <h2 className="text-[#0F172A] font-semibold mb-2">Suede Bomber Jacket</h2>
+                  <h2 className="text-[#0F172A] font-semibold mb-2 dark:text-white">Suede Bomber Jacket</h2>
                   <div className="flex items-center gap-5">
-                    <p className="text-[#64748B] text-[14px]">Orange</p>
+                    <p className="text-[#64748B] text-[14px] dark:text-white">Orange</p>
                     <div className="flex items-center ">
                       <div className="flex items-center justify-end gap-1">
                         <svg
@@ -69,7 +69,7 @@ const index = () => {
                             fill="#FBBF24"
                           />
                         </svg>
-                        <p className="text-[#64748B] text-[14px]">5 (269 reviews)</p>
+                        <p className="text-[#64748B] text-[14px] dark:text-white">5 (269 reviews)</p>
                       </div>
                     </div>
                   </div>
@@ -82,7 +82,7 @@ const index = () => {
           </SwiperSlide>
 
           <SwiperSlide>
-            <div className="card min-w-[400px] h-[485px] bg-white rounded-lg p-3 hover:shadow cursor-pointer">
+            <div className="card min-w-[400px] h-[485px] bg-white dark:bg-gray-700 dark:border dark:border-gray-500 rounded-lg p-3 hover:shadow cursor-pointer">
               <img className="h-[250px] w-full object-cover rounded-[16px]" src={bag1} alt="jacket" />
               <div className="mini_imgs flex items-center justify-between  my-2">
                 <img className="h-[110px] w-[120px] rounded-[16px] object-cover" src={bag2} alt="jacket" />
@@ -91,9 +91,9 @@ const index = () => {
               </div>
               <div className="flex items-start justify-between mt-4">
                 <div>
-                  <h2 className="text-[#0F172A] font-semibold mb-2">Downtown Pet Tote</h2>
+                  <h2 className="text-[#0F172A] font-semibold mb-2 dark:text-white">Downtown Pet Tote</h2>
                   <div className="flex items-center gap-5">
-                    <p className="text-[#64748B] text-[14px]">Black and Orange</p>
+                    <p className="text-[#64748B] text-[14px] dark:text-white">Black and Orange</p>
                     <div className="flex items-center ">
                       <div className="flex items-center justify-end gap-1">
                         <svg
@@ -110,7 +110,7 @@ const index = () => {
                             fill="#FBBF24"
                           />
                         </svg>
-                        <p className="text-[#64748B] text-[14px]">5 (269 reviews)</p>
+                        <p className="text-[#64748B] text-[14px] dark:text-white">5 (269 reviews)</p>
                       </div>
                     </div>
                   </div>
@@ -123,7 +123,7 @@ const index = () => {
           </SwiperSlide>
 
           <SwiperSlide>
-            <div className="card min-w-[400px] h-[485px] bg-white rounded-lg p-3 hover:shadow cursor-pointer">
+            <div className="card min-w-[400px] h-[485px] bg-white dark:bg-gray-700 dark:border dark:border-gray-500 rounded-lg p-3 hover:shadow cursor-pointer">
               <img className="h-[250px] w-full object-cover rounded-[16px]" src={shoe1} alt="jacket" />
               <div className="mini_imgs flex items-center justify-between  my-2">
                 <img className="h-[110px] w-[120px] rounded-[16px] object-cover" src={shoe2} alt="jacket" />
@@ -132,9 +132,9 @@ const index = () => {
               </div>
               <div className="flex items-start justify-between mt-4">
                 <div>
-                  <h2 className="text-[#0F172A] font-semibold mb-2">Cader Leather Sneakers</h2>
+                  <h2 className="text-[#0F172A] font-semibold mb-2 dark:text-white">Cader Leather Sneakers</h2>
                   <div className="flex items-center gap-5">
-                    <p className="text-[#64748B] text-[14px]">3 Sizes available</p>
+                    <p className="text-[#64748B] text-[14px] dark:text-white">3 Sizes available</p>
                     <div className="flex items-center ">
                       <div className="flex items-center justify-end gap-1">
                         <svg
@@ -151,7 +151,7 @@ const index = () => {
                             fill="#FBBF24"
                           />
                         </svg>
-                        <p className="text-[#64748B] text-[14px]">5 (269 reviews)</p>
+                        <p className="text-[#64748B] text-[14px] dark:text-white">5 (269 reviews)</p>
                       </div>
                     </div>
                   </div>
@@ -164,10 +164,10 @@ const index = () => {
           </SwiperSlide>
 
           <SwiperSlide>
-            <div className="min-w-[400px] h-[440px] bg-[#F3F4F6] mt-3 rounded-[16px] hover:shadow cursor-pointer">
+            <div className="min-w-[400px] h-[440px] bg-[#F3F4F6] dark:bg-gray-700 dark:border dark:border-gray-500 mt-3 rounded-[16px] hover:shadow cursor-pointer">
               <div className="flex items-center justify-center flex-col h-full">
                 <div className="flex items-center gap-3">
-                  <h2 className="text-2xl font-medium">More items</h2>
+                  <h2 className="text-2xl font-medium text-white">More items</h2>
 
                   <svg
                     className="rotate-[140deg]"
@@ -195,15 +195,15 @@ const index = () => {
                     />
                   </svg>
                 </div>
-                <p className="text-[16px] ml-[-46px]">Show me more</p>
+                <p className="text-[16px] ml-[-46px] text-white">Show me more</p>
               </div>
             </div>
           </SwiperSlide>
           <div className="button-next-slide w-[40px] h-[40px] absolute top-0 right-0 cursor-pointer hover:border duration-200 rounded-full flex items-center justify-center">
-            <i className='bx bx-right-arrow-alt text-[25px]' ></i>
+            <i className='bx bx-right-arrow-alt text-[25px] dark:text-white' ></i>
           </div>
           <div className="button-prev-slide w-[40px] h-[40px] cursor-pointer absolute top-0 right-[45px] hover:border duration-200 rounded-full flex items-center justify-center">
-            <i className='bx bx-left-arrow-alt text-[25px]'></i>
+            <i className='bx bx-left-arrow-alt text-[25px] dark:text-white'></i>
           </div>
 
         </Swiper>

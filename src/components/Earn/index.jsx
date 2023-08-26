@@ -9,10 +9,10 @@ const index = () => {
         <div className="wrapper flex items-center justify-between">
           <div className="left_side">
            
-            <h2 className="text-[60px] font-semibold leading-[72px] tracking-[-1.5px] mb-[22px]">
+            <h2 className="text-[60px] font-semibold leading-[72px] tracking-[-1.5px] mb-[22px] dark:text-white">
               Earn free money with Ciseco
             </h2>
-            <p className="mb-[49px] text-[16px] font-normal leading-[24px]">
+            <p className="mb-[49px] text-[16px] font-normal leading-[24px] dark:text-white">
               With Ciseco you will get freeship & savings combo...
             </p>
             <div className="flex items-center gap-5">

@@ -9,7 +9,7 @@ const baseURL = "http://eclo.uz:8080/api";
 const index = () => {
 
     const getToken = localStorage.getItem("token");
-
+    
     const [data, setData] = useState({
         firstName: "",
         lastName: "",
@@ -20,11 +20,8 @@ const index = () => {
         address: "",
         imagePath: ""
     });
-    useEffect(() => {
-        getProfile();
-        
-    }, [])
-
+   
+    const [avatar, setAvatar] = useState('');
    
     // const [name, setName] = useState("");
     // const [surname, setSurname] = useState("");
@@ -42,10 +39,14 @@ const index = () => {
                 }
             })
             setData(response.data);
+            console.log("dd " + response.data);  
         }catch(error){
             console.log(error.message);
         }
     }
+
+
+    console.log("dd " + avatar);
 
     const updateAccount = {
         firstName: data.firstName,
@@ -58,7 +59,7 @@ const index = () => {
         imagePath: data.imagePath
     }
 
-    console.log(data.imagePath);
+ 
     async function updateProfile() {
         try {
             const response = await axios.put(`${baseURL}/user/profile/userId`, updateAccount, {
@@ -85,8 +86,10 @@ const index = () => {
    
     document.title = `Eclo | ${data.firstName}`;
 
- 
-
+    useEffect(() => {
+        getProfile();
+    }, [])
+    
     
     return (
         <section className="py-[100px]">
@@ -109,7 +112,7 @@ const index = () => {
 
                         
                         <form onSubmit={submitHandle} className="flex gap-x-16">
-                            <img className="w-[128px] h-[128px] rounded-full bg-slate-400" src={data.imagePath} alt="avatar" />
+                            <img className="w-[128px] h-[128px] rounded-full bg-slate-400" src={avatar} alt="avatar" />
                             <div className="w-[80%]">
                                 <div className="relative z-0 w-full mb-6 group">
                                     <input value={data.firstName} onChange={(e) => setData(prevData => ({ ...prevData, firstName: e.target.value }))} type="text" name="floating_first_name" id="floating_first_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />

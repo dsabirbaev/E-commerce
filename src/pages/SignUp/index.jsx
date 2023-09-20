@@ -4,10 +4,10 @@ import { useState } from "react";
 import "./style.scss";
 import logo from "../../assets/icons/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-const baseURL = "http://eclo.uz:8080/api";
 
 import { ToastContainer, toast } from 'react-toastify';
+
+import useAuth from "../../services/auth/useAuth";
 
 const index = () => {
     document.title = "Eclo | Registration";
@@ -17,97 +17,77 @@ const index = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [password, setPassword] = useState("");
 
-
-    const [verifyNumber, setVerifyNumber] = useState("");
     const [codeInput, setCodeInput] = useState("");
 
     const [flag, setFlag] = useState(true);
 
-    async function registerForm() {
-        try {
-            const newUser = {
-                firstName: firstName,
-                lastName: lastName,
-                phoneNumber: phoneNumber,
-                password: password,
-            };
-            const response = await axios.post(`${baseURL}/auth/register`, newUser,
-                {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                }
-            );
-            console.log("first api " + response.data);
 
-            console.log("success first API")
-            if (response.status == 200) {
+    const registerForm = () => {
+
+        const newUser = {
+            firstName: firstName,
+            lastName: lastName,
+            phoneNumber: phoneNumber,
+            password: password,
+        };
+        useAuth.register(newUser).then((res) => {
+            if (res.status == 200) {
+                console.log("first api " + res);
+                setTimeout(() => {
+                    sendCode(phoneNumber);
+                }, 1000)
+                
+            }
+        }).catch((err) => {
+            console.log("Registerform error " + err)
+        })
+    }
+
+    const sendCode = (number) => {
+        console.log("number " + number)
+
+        useAuth.sendCode(number).then((res) => {
+            console.log(res)
+            if(res.status == 200){
+                console.log("send-code working " + res);
+
                 setFlag(false);
             }
-        } catch (error) {
-            console.log("error first api " + error.message);
-            toast.info("Please fill data correctly!", { autoClose: 2000 });
-        }
+        }).catch((err) => {
+            console.log("sendCode error " + err.message)
+            console.log("Error details:", err.response.data);
+        })
     }
 
-    async function sendCode(number) {
-        
-        try {
-            
-            const response = await axios.post(
-                `${baseURL}/auth/register/send-code`,
-                `"${number}"`,
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }
-            );
-            console.log("sendCode response:", response.data);
-            return response.data;
-        } catch (error) {
-            console.log("Error sending code:", error.message);
-            console.log("Error details:", error.response.data);
-            throw error;
+    
+    const verify = (number, code) => {
+
+        const verifyInfo = {
+            phoneNumber: number,
+            code: code
         }
+
+        useAuth.verify(verifyInfo).then((res) => {
+            if(res.status == 200){
+                toast.success("Account created!", { autoClose: 1000 });
+
+                setTimeout(() => {
+                    navigate("/login");
+                }, 1500)
+            }
+        }).catch((err) => {
+            console.log("verify error " + err)
+        })
     }
 
-
-    async function verifyCode(number, code) {
-        try {
-            const response = await axios.post(`${baseURL}/auth/register/verify`, {
-                phoneNumber: number,
-                code: code
-            });
-            console.log(response.data);
-
-            console.log("Success");
-
-            toast.success("Account created!", { autoClose: 1500 });
-            setTimeout(() => {
-                navigate("/login");
-            }, 2000)
-        } catch (error) {
-            console.log("Error verify:", error.message);
-            toast.error("Error verify code", { autoClose: 2000 });
-        }
-    }
-
-    const onRegister = async (e) => {
+    const onRegister = (e) => {
         e.preventDefault();
-
-        try {
-            await registerForm();
-            await sendCode(phoneNumber);
-            
-        } catch (error) {
-            console.log("Error during registration and verification:", error.message);
-        }
+        registerForm();
     };
 
-    const onVerifyCode = async (e) => {
+    const onVerifyCode =  (e) => {
         e.preventDefault();
-        await verifyCode(phoneNumber, Number(codeInput));
+        verify(phoneNumber, Number(codeInput));
     }
 
     return (

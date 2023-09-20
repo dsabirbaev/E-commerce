@@ -13,8 +13,11 @@ const useAuth = {
         }
     }),
     sendCode: (data) => api.post(`/user/auth/register/send-code?phone=${encodeURIComponent(data)}`),
-    verify: (data) => api.post("/user/auth/register/verify", data),
-    login: (data) => api.post("/user/auth/login", data)
+    verifyRegister: (data) => api.post("/user/auth/register/verify", data),
+    login: (data) => api.post("/user/auth/login", data),
+    reset: (data) => api.post("/user/auth/reset/send-code", data),
+    verifyReset: (data) => api.post("/user/auth/reset/verify", data),
+    updataPassword: (data) => api.post("/user/auth/reset/update-password", data)
 }
 
 export default useAuth;

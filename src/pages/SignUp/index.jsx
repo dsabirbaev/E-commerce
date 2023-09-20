@@ -67,7 +67,7 @@ const index = () => {
             code: code
         }
 
-        useAuth.verify(verifyInfo).then((res) => {
+        useAuth.verifyRegister(verifyInfo).then((res) => {
             if(res.status == 200){
                 toast.success("Account created!", { autoClose: 1000 });
 

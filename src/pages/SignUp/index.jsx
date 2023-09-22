@@ -6,7 +6,7 @@ import logo from "../../assets/icons/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 
 import { ToastContainer, toast } from 'react-toastify';
-
+import InputMask from 'react-input-mask';
 import useAuth from "../../services/auth/useAuth";
 
 const index = () => {
@@ -21,20 +21,22 @@ const index = () => {
 
     const [flag, setFlag] = useState(true);
 
+    const telNumber = `+998${phoneNumber.replace(/\D/g, '')}`;
 
     const registerForm = () => {
-
+        
         const newUser = {
             firstName: firstName,
             lastName: lastName,
-            phoneNumber: phoneNumber,
+            phoneNumber: telNumber,
             password: password,
         };
+        console.log(newUser)
         useAuth.register(newUser).then((res) => {
             if (res.status == 200) {
                 console.log("first api " + res);
                 setTimeout(() => {
-                    sendCode(phoneNumber);
+                    registerSendCode(telNumber);
                 }, 1000)
                 
             }
@@ -43,10 +45,10 @@ const index = () => {
         })
     }
 
-    const sendCode = (number) => {
+    const registerSendCode = (number) => {
         console.log("number " + number)
 
-        useAuth.sendCode(number).then((res) => {
+        useAuth.registerSendCode(number).then((res) => {
             console.log(res)
             if(res.status == 200){
                 console.log("send-code working " + res);
@@ -60,14 +62,14 @@ const index = () => {
     }
 
     
-    const verify = (number, code) => {
+    const registerVerify = (number, code) => {
 
         const verifyInfo = {
             phoneNumber: number,
             code: code
         }
 
-        useAuth.verifyRegister(verifyInfo).then((res) => {
+        useAuth.registerVerify(verifyInfo).then((res) => {
             if(res.status == 200){
                 toast.success("Account created!", { autoClose: 1000 });
 
@@ -87,7 +89,7 @@ const index = () => {
 
     const onVerifyCode =  (e) => {
         e.preventDefault();
-        verify(phoneNumber, Number(codeInput));
+        registerVerify(telNumber, Number(codeInput));
     }
 
     return (
@@ -119,7 +121,12 @@ const index = () => {
 
                                     <div>
                                         <label htmlFor="p-number" className="block mb-2 text-sm font-medium text-gray-900">Phone Number</label>
-                                        <input value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} type="text" name="p-number" id="p-number" className="outline-none bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="+998XXXXXXXXX" required />
+                                        <div className="flex  bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full">
+                                            <span className="bg-gray-200 font-medium py-2.5 px-2">+998</span>
+                                            <InputMask value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} className="w-full outline-none px-2" mask="(99)999-99-99" maskChar="-" type="tel" placeholder="(XX) XXX-XX-XX" required>
+                                            </InputMask>
+                                            {/* <input value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} type="text" name="p-number" id="p-number"   className="w-full outline-none bg-transparent px-2" placeholder="+998XXXXXXXXX" required /> */}
+                                        </div>
                                     </div>
                                     <div>
                                         <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">Password</label>
@@ -143,7 +150,7 @@ const index = () => {
                                 <form onSubmit={onVerifyCode} className="mt-2 w-full flex justify-center items-center">
                                     <div className="w-[400px] rounded-2xl bg-white border shadow-md p-5">
                                         <h2 className="mb-4 font-bold">Verify Code</h2>
-                                        <input value={phoneNumber} type="text" className="mb-4 outline-none bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="+998XXXXXXXXX" required />
+                                        <input value={telNumber} type="text" className="mb-4 outline-none bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="+998XXXXXXXXX" required />
                                         <input value={codeInput} onChange={(e) => setCodeInput(e.target.value)} type="text" className="mb-4 outline-none bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="Code" required />
                                         <button type="submit" className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Send</button>
                                     </div>

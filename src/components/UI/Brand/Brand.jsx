@@ -4,6 +4,7 @@
 import "./style.scss";
 
 const Brand = ({case:{name, brandIconPath}, path:{imgPath}}) => {
+    console.log(brandIconPath)
     return (
         <div className="brand">
             <div className="hover:shadow-lg  cursor-pointer w-[250px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">

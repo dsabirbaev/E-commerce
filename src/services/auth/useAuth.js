@@ -12,12 +12,17 @@ const useAuth = {
             "Content-Type": "multipart/form-data",
         }
     }),
-    sendCode: (data) => api.post(`/user/auth/register/send-code?phone=${encodeURIComponent(data)}`),
-    verifyRegister: (data) => api.post("/user/auth/register/verify", data),
+    registerSendCode: (data) => api.post(`/user/auth/register/send-code?phone=${encodeURIComponent(data)}`),
+    registerVerify: (data) => api.post("/user/auth/register/verify", data),
     login: (data) => api.post("/user/auth/login", data),
     reset: (data) => api.post("/user/auth/reset/send-code", data),
-    verifyReset: (data) => api.post("/user/auth/reset/verify", data),
-    updataPassword: (data) => api.post("/user/auth/reset/update-password", data)
+    resetVerify: (data) => api.post("/user/auth/reset/verify", data),
+    resetUpdataPassword: (data) => api.put("/user/auth/reset/update-password", data, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+        }
+    })
+    
 }
 
 export default useAuth;

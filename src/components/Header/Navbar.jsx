@@ -1,15 +1,14 @@
 
-
+import { useState, useEffect, useRef } from "react";
 import "./style.scss";
 import logo from "../../assets/icons/logo.svg";
-
 import { NavLink, Link } from "react-router-dom";
-
 import { LoginOutlined, UserOutlined, CarryOutOutlined, HeartOutlined, BulbOutlined, FormOutlined, LogoutOutlined } from '@ant-design/icons';
-import { useState, useEffect, useRef } from "react";
+
 
 import user from "../../assets/images/user.png";
 import axios from "axios";
+
 const baseURL = "http://eclo.uz:8080/api";
 
 import emptyCart from "../../assets/images/empty-cart.png"

@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
-
 import "./style.scss";
-
-import axios from "axios";
-const baseURL = "http://eclo.uz:8080/api";
 const imgPath = "http://eclo.uz:8080";
 import Brand from "../../components/UI/Brand/Brand";
 
@@ -11,13 +7,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/bundle';
-
+import useBrand from "../../services/brand/useBrand";
 const index = () => {
     const [brand, setBrand] = useState([]);
 
-    async function getBrand() {
+    const getBrand = async() => {
         try {
-            const response = await axios.get(`${baseURL}/common/brands`);
+            const response = await useBrand.getBrand();
             setBrand(response.data);
         } catch (err) {
             console.log(err.message);
@@ -129,7 +125,9 @@ const index = () => {
 
                     <div className="wrapper  w-[75%]">
                         <div className="brands flex h-[330px] relative">
-                            <Swiper
+                            {
+                                brand.length ? 
+                                <Swiper
                                 spaceBetween={20}
                                 slidesPerView={3}
                                 slidesPerGroup={2}
@@ -146,7 +144,7 @@ const index = () => {
                                 
                             >
                                 {
-                                    brand.map((item) => (
+                                    brand?.map((item) => (
                                         <SwiperSlide className="flex pt-[10px] justify-center">
                                             <Brand key={item.id} case={item} path={{ imgPath }} />
                                         </SwiperSlide>
@@ -154,9 +152,10 @@ const index = () => {
                                     ))
                                 }
 
-                            
-                            </Swiper>
-
+                              
+                                </Swiper>:  <h1 className="text-center text-2xl">Data Not Found</h1>
+                            }
+                           
 
                         </div>
                     </div>

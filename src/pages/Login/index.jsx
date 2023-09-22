@@ -43,9 +43,9 @@ const index = () => {
   document.title = "Eclo | Login"
 
   return (
-    <section className="bg-gray-50 relative">
+    <section className="bg-gray-50">
       <ToastContainer />
-      <Link to="/" className="absolute top-5 left-5"><button type="button" className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Back</button></Link>
+      
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <Link to="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900">
           <img className="w-[300px] h-8 mr-2 object-cover object-center" src={logo} alt="logo" />

@@ -18,16 +18,10 @@ const Navbar = () => {
     const [searchInput, setSearchInput] = useState(false);
 
     const [cart, setCart] = useState(false);
-    const [darkMode, setDarkMode] = useState(false);
+    const [darkMode, setDarkMode] = useState(localStorage.getItem('darkMode') === 'true' || false);
 
     const navRef = useRef();
-    const toggleDarkMode = (e) => {
-        e.stopPropagation()
-        setDarkMode(!darkMode);
-        document.documentElement.classList.toggle("dark");
-    }
-
-    
+        
     const logOut = () => {
         localStorage.clear();
     }
@@ -49,6 +43,9 @@ const Navbar = () => {
     }
     useEffect(() => {
         getInfo();
+        localStorage.setItem('darkMode', darkMode);
+        darkMode ?  document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
+
 
         let handler = (e) =>{
             if(!navRef.current.contains(e.target)){
@@ -62,7 +59,7 @@ const Navbar = () => {
         return () => {
             document.removeEventListener("mousedown", handler);
         }
-    }, [])
+    }, [darkMode])
 
     localStorage.setItem("name", info.firstName);
 
@@ -132,7 +129,7 @@ const Navbar = () => {
                                                 <li className="hover:bg-slate-100 dark:hover:bg-gray-500 relative pl-[30px] p-2 rounded-md"><a href="#"><HeartOutlined className="absolute left-1 text-[18px]" /> Wishlist</a></li>
                                             </ul>
                                             <ul className="text-[14px] font-medium text-[#334155] dark:text-white flex flex-col gap-y-2">
-                                                <li onClick={(e) => toggleDarkMode(e)} className="hover:bg-slate-100 dark:hover:bg-gray-500 relative pl-[30px] p-2 rounded-md flex items-center justify-between"><BulbOutlined className="absolute left-1 text-[18px]" /> Dark theme
+                                                <li onClick={() => setDarkMode(!darkMode)} className="hover:bg-slate-100 dark:hover:bg-gray-500 relative pl-[30px] p-2 rounded-md flex items-center justify-between"><BulbOutlined className="absolute left-1 text-[18px]" /> Dark theme
                                                     <label className="relative inline-flex items-center mr-5 cursor-pointer">
                                                         <span >
                                                             {

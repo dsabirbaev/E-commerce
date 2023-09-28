@@ -20,36 +20,25 @@ const Navbar = () => {
     const [cart, setCart] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
 
-    function toggleDarkMode(e) {
+    const navRef = useRef();
+    const toggleDarkMode = (e) => {
         e.stopPropagation()
         setDarkMode(!darkMode);
         document.documentElement.classList.toggle("dark");
     }
 
-    const handleProfileToggle = () => {
-        setProfile(!profile);
-    };
-
-    function logOut() {
+    
+    const logOut = () => {
         localStorage.clear();
     }
-
-    const dropdownRef = useRef(null);
-
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                setProfile(false);
-            }
-        }
-        document.addEventListener("mousedown", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
-
-
+    const openMenu = () => {
+        setProfile(!profile);
+        setCart(false);
+    }
+    const openCart = () => {
+        setCart(!cart)
+        setProfile(false)
+    }
 
     const getInfo = () => {
         useUser.profile().then((res) => {
@@ -61,8 +50,22 @@ const Navbar = () => {
     useEffect(() => {
         getInfo();
 
+        let handler = (e) =>{
+            if(!navRef.current.contains(e.target)){
+                setProfile(false);
+                setCart(false);
+            }
+        }
+        
+        document.addEventListener("mousedown", handler);
+
+        return () => {
+            document.removeEventListener("mousedown", handler);
+        }
     }, [])
+
     localStorage.setItem("name", info.firstName);
+
     return (
         <div className="h-[80px] bg-white flex items-center">
             <nav className="nav flex items-center justify-between w-full bg-white dark:bg-gray-800 ">
@@ -104,61 +107,62 @@ const Navbar = () => {
                 }
 
                 <div className="flex items-center gap-x-1 cursor-pointer">
-                    <span onClick={() => setSearchInput(!searchInput)} className="w-[48px] h-[48px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full flex items-center justify-center"><i className='bx bx-search text-[25px] dark:text-white'></i></span>
+                    <div onClick={() => setSearchInput(!searchInput)} className="w-[48px] h-[48px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full flex items-center justify-center">
+                        <i className='bx bx-search text-[25px] dark:text-white'></i>
+                    </div>
                     {
                         isAuth ?
-                            <div className="flex gap-x-1">
-                                <span onClick={handleProfileToggle} className="relative w-[48px] h-[48px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full flex items-center justify-center"><i className='bx bx-user text-[25px] dark:text-white'></i>
-                                    {
-                                        profile ?
-                                            <div ref={dropdownRef} className="absolute top-[130%] right-[0%] bg-white dark:bg-gray-700 dark:border dark:border-gray-500 rounded-2xl px-4 py-5 w-[280px]">
-                                                <div className="flex items-center gap-x-[14px] mb-8">
-                                                    <img className="w-[48p] h-[48px] rounded-full object-cover object-center" src={user} alt="user" />
-                                                    <div>
-                                                        <h2 className="text-[16px] font-semibold text-[#334155] dark:text-white">{localStorage.getItem("name") ? localStorage.getItem("name") : "User"}</h2>
-                                                        <p className="text-medium text-[12px] text-[#334155] dark:text-white">{localStorage.getItem("region") ? localStorage.getItem("region") : "QR | Nukus"}</p>
-                                                    </div>
-                                                </div>
-                                                <ul className="user-list text-[14px] font-medium text-[#334155] dark:text-white flex flex-col gap-y-2 mb-6">
-                                                    <li className="hover:bg-slate-100 dark:hover:bg-gray-500 relative pl-[30px] p-2 rounded-md"><Link to="/profile"><UserOutlined className="absolute left-1 text-[18px]" /> My Account</Link></li>
-                                                    <li onClick={(e) => { e.stopPropagation() }} className="hover:bg-slate-100 dark:hover:bg-gray-500 relative pl-[30px] p-2 rounded-md"><a href="#"><CarryOutOutlined className="absolute left-1 text-[18px]" /> My Order</a></li>
-                                                    <li onClick={(e) => { e.stopPropagation() }} className="hover:bg-slate-100 dark:hover:bg-gray-500 relative pl-[30px] p-2 rounded-md"><a href="#"><HeartOutlined className="absolute left-1 text-[18px]" /> Wishlist</a></li>
-                                                </ul>
-                                                <ul className="text-[14px] font-medium text-[#334155] dark:text-white flex flex-col gap-y-2">
-                                                    <li onClick={(e) => toggleDarkMode(e)} className="hover:bg-slate-100 dark:hover:bg-gray-500 relative pl-[30px] p-2 rounded-md flex items-center justify-between"><BulbOutlined className="absolute left-1 text-[18px]" /> Dark theme
-                                                        <label className="relative inline-flex items-center mr-5 cursor-pointer">
-                                                            <span >
-                                                                {
-                                                                    darkMode ? <i title="Switch to light" className='bx bx-sun text-[18px]'></i> :
-                                                                        <i title="Switch to dark" className='bx bx-moon text-[18px]'></i>
-
-                                                                }
-                                                            </span>
-
-                                                        </label>
-                                                    </li>
-                                                    <li onClick={(e) => { e.stopPropagation() }} className="hover:bg-slate-100 dark:hover:bg-gray-500 relative pl-[30px] p-2 rounded-md"><a href="#"><FormOutlined className="absolute left-1 text-[18px]" /> Help</a></li>
-                                                    <li onClick={logOut} className="hover:bg-slate-100 dark:hover:bg-gray-500 relative pl-[30px] p-2 rounded-md"><a href="#"><LogoutOutlined className="absolute left-1 text-[18px]" /> Log out</a></li>
-                                                </ul>
-                                            </div> :
-                                            null
-                                    }
-
-                                </span>
-
-                                <span onClick={() => setCart(!cart)} className="relative w-[48px] h-[48px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full flex items-center justify-center"><i className='bx bx-cart-alt text-[25px] dark:text-white'></i>
-                                    {
-                                        cart ?
-                                            <div className="absolute top-[130%] right-0 bg-white dark:bg-gray-700 dark:text-white dark:border dark:border-gray-500 rounded-2xl px-4 py-5 w-[450px]">
-                                                <h2 className="font-semibold text-xl mb-5">Shooping cart</h2>
-                                                <div className="flex flex-col items-center justify-center">
-                                                    <img className="mb-3" src={emptyCart} alt="cart" />
-                                                    <p className="font-bold text-lg">Сart is empty</p>
+                            <div className="flex gap-x-1 relative" ref={navRef}>
+                                <div onClick={openMenu}  className="relative w-[48px] h-[48px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full flex items-center justify-center">
+                                    <i className='bx bx-user text-[25px] dark:text-white'></i>
+                                </div>
+                                {
+                                    profile ?
+                                        <div  className="absolute top-[130%] right-[0%] bg-white dark:bg-gray-700 dark:border dark:border-gray-500 rounded-2xl px-4 py-5 w-[280px]">
+                                            <div className="flex items-center gap-x-[14px] mb-8">
+                                                <img className="w-[48p] h-[48px] rounded-full object-cover object-center" src={user} alt="user" />
+                                                <div>
+                                                    <h2 className="text-[16px] font-semibold text-[#334155] dark:text-white">{localStorage.getItem("name") ? localStorage.getItem("name") : "User"}</h2>
+                                                    <p className="text-medium text-[12px] text-[#334155] dark:text-white">{localStorage.getItem("region") ? localStorage.getItem("region") : "QR | Nukus"}</p>
                                                 </div>
                                             </div>
-                                            : null
-                                    }
-                                </span>
+                                            <ul className="user-list text-[14px] font-medium text-[#334155] dark:text-white flex flex-col gap-y-2 mb-6">
+                                                <li className="hover:bg-slate-100 dark:hover:bg-gray-500 relative pl-[30px] p-2 rounded-md"><Link to="/profile"><UserOutlined className="absolute left-1 text-[18px]" /> My Account</Link></li>
+                                                <li className="hover:bg-slate-100 dark:hover:bg-gray-500 relative pl-[30px] p-2 rounded-md"><a href="#"><CarryOutOutlined className="absolute left-1 text-[18px]" /> My Order</a></li>
+                                                <li className="hover:bg-slate-100 dark:hover:bg-gray-500 relative pl-[30px] p-2 rounded-md"><a href="#"><HeartOutlined className="absolute left-1 text-[18px]" /> Wishlist</a></li>
+                                            </ul>
+                                            <ul className="text-[14px] font-medium text-[#334155] dark:text-white flex flex-col gap-y-2">
+                                                <li onClick={(e) => toggleDarkMode(e)} className="hover:bg-slate-100 dark:hover:bg-gray-500 relative pl-[30px] p-2 rounded-md flex items-center justify-between"><BulbOutlined className="absolute left-1 text-[18px]" /> Dark theme
+                                                    <label className="relative inline-flex items-center mr-5 cursor-pointer">
+                                                        <span >
+                                                            {
+                                                                darkMode ? <i title="Switch to light" className='bx bx-sun text-[18px]'></i> :
+                                                                    <i title="Switch to dark" className='bx bx-moon text-[18px]'></i>
+
+                                                            }
+                                                        </span>
+
+                                                    </label>
+                                                </li>
+                                                <li className="hover:bg-slate-100 dark:hover:bg-gray-500 relative pl-[30px] p-2 rounded-md"><a href="#"><FormOutlined className="absolute left-1 text-[18px]" /> Help</a></li>
+                                                <li onClick={logOut} className="hover:bg-slate-100 dark:hover:bg-gray-500 relative pl-[30px] p-2 rounded-md"><a href="#"><LogoutOutlined className="absolute left-1 text-[18px]" /> Log out</a></li>
+                                            </ul>
+                                        </div> : null
+                                }
+
+                                <div onClick={openCart}  className="relative w-[48px] h-[48px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full flex items-center justify-center"><i className='bx bx-cart-alt text-[25px] dark:text-white'></i>
+                                   
+                                </div>
+                                {
+                                    cart ?
+                                        <div  className="absolute top-[130%] right-0 bg-white dark:bg-gray-700 dark:text-white dark:border dark:border-gray-500 rounded-2xl px-4 py-4 w-[350px]">
+                                            <h2 className="font-semibold text-xl mb-5">Shopping cart</h2>
+                                            <div className="flex flex-col items-center justify-center">
+                                                <img className="mb-3" src={emptyCart} alt="cart" />
+                                                <p className="font-bold text-md">Сart is empty</p>
+                                            </div>
+                                    </div> : null
+                                }
                             </div>
 
                             : <NavLink to="/login" className="w-[48px] h-[48px] hover:bg-slate-100 rounded-full flex items-center justify-center text-[22px]"><LoginOutlined /></NavLink>

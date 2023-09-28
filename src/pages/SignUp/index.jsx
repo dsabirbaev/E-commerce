@@ -68,7 +68,9 @@ const index = () => {
             phoneNumber: number,
             code: code
         }
-
+        console.log(verifyInfo)
+        console.log(typeof verifyInfo.phoneNumber)
+        console.log(typeof verifyInfo.code)
         useAuth.registerVerify(verifyInfo).then((res) => {
             if(res.status == 200){
                 toast.success("Account created!", { autoClose: 1000 });
@@ -79,6 +81,7 @@ const index = () => {
             }
         }).catch((err) => {
             console.log("verify error " + err)
+            console.log(err)
         })
     }
 

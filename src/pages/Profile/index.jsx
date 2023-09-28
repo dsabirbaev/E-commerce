@@ -1,11 +1,8 @@
 
-import { useState } from "react";
-
+import { useEffect,useState } from "react";
+import useUser from "../../services/user/useUser";
+// const baseURL = "http://eclo.uz:8080/api";
 import "./style.scss";
-import axios from "axios";
-import { useEffect } from "react";
-const baseURL = "http://eclo.uz:8080/api";
-
 const index = () => {
 
     const getToken = localStorage.getItem("token");
@@ -33,13 +30,9 @@ const index = () => {
 
     async function getProfile() {
         try{
-            const response = await axios.get(`${baseURL}/user/profile/userId`, {
-                headers: {
-                    'Authorization': `Bearer ${getToken}`
-                }
-            })
+            const response = await useUser.profile();
             setData(response.data);
-            console.log("dd " + response.data);  
+            console.log(response.data);  
         }catch(error){
             console.log(error.message);
         }

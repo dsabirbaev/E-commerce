@@ -7,9 +7,7 @@ import { LoginOutlined, UserOutlined, CarryOutOutlined, HeartOutlined, BulbOutli
 
 
 import user from "../../assets/images/user.png";
-import axios from "axios";
-
-const baseURL = "http://eclo.uz:8080/api";
+import useUser from "../../services/user/useUser";
 
 import emptyCart from "../../assets/images/empty-cart.png"
 const Navbar = () => {
@@ -18,6 +16,7 @@ const Navbar = () => {
     const [profile, setProfile] = useState(false);
     const [info, setInfo] = useState([]);
     const [searchInput, setSearchInput] = useState(false);
+    
     const [cart, setCart] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
 
@@ -35,6 +34,7 @@ const Navbar = () => {
     }
 
     const dropdownRef = useRef(null);
+
     useEffect(() => {
         function handleClickOutside(event) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -48,17 +48,15 @@ const Navbar = () => {
         };
     }, []);
 
-    async function getInfo() {
-        try{
-            const response = await axios.get(`${baseURL}/user/profile/userId`, {
-                headers: {
-                    'Authorization': `Bearer ${isAuth}`
-                }
-            })
-            setInfo(response.data);
-        }catch(error){
-            console.log(error.message);
-        }
+
+ 
+    const getInfo = () => {
+        useUser.profile().then((res) => {
+            
+            setInfo(res.data)
+        }).catch((err) => {
+            console.log(err.message)
+        })
     }
     useEffect(() => {
         getInfo();

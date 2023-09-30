@@ -1,9 +1,9 @@
 
 
-
+const imgPath = "http://68.183.181.125:89";
 import "./style.scss";
 
-const Brand = ({case:{name, brandIconPath}, path:{imgPath}}) => {
+const Brand = ({case:{name, brandIconPath}}) => {
     console.log(brandIconPath)
     return (
         <div className="brand">

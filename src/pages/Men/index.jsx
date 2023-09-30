@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./style.scss";
-const imgPath = "http://eclo.uz:8080";
+
 import Brand from "../../components/UI/Brand/Brand";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -10,10 +10,14 @@ import 'swiper/css/bundle';
 import useBrand from "../../services/brand/useBrand";
 import useSubCategory from "../../services/category/useCategory";
 import useSize from "../../services/size/useSize";
+import useProduct from "../../services/product/useProduct";
+
+import CardProduct from "../../components/UI/CardProduct/Card";
 const index = () => {
     const [brand, setBrand] = useState([]);
     const [category, setCategory] = useState([]);
     const [size, setSize] = useState([]);
+    const [product, setProduct] = useState([]);
     const getBrand = async () => {
         try {
             const response = await useBrand.getBrand();
@@ -42,10 +46,19 @@ const index = () => {
         }
     }
 
+    const getProduct = async() => {
+        try {
+            const response = await useProduct.getProduct();
+            setProduct(response.data);
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
     useEffect(() => {
         getBrand();
         getSubCategory();
         getSize();
+        getProduct();
     }, [])
 
     const uniqueSize = [];
@@ -107,7 +120,7 @@ const index = () => {
                     </aside>
 
                     <div className="wrapper  w-[75%]">
-                        <div className="brands flex h-[330px] relative">
+                        <div className="brands flex h-[330px] relative mb-5">
                             {
                                 brand.length ?
                                     <Swiper
@@ -129,7 +142,7 @@ const index = () => {
                                         {
                                             brand?.map((item) => (
                                                 <SwiperSlide key={item.id} className="flex pt-[10px] justify-center">
-                                                    <Brand  case={item} path={{ imgPath }} />
+                                                    <Brand  case={item} />
                                                 </SwiperSlide>
 
                                             ))
@@ -140,6 +153,14 @@ const index = () => {
                             }
 
 
+                        </div>
+
+                        <div className="grid grid-cols-3 gap-3">
+                            {
+                                product.length ? product.map((item) => {
+                                    return <CardProduct key={item.id} case={item}/>
+                                }): <h1 className="text-center text-2xl">Product Not Found</h1>
+                            }
                         </div>
                     </div>
                 </div>

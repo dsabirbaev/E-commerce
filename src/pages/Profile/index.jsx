@@ -91,7 +91,7 @@ const index = () => {
 
                         <form onSubmit={submitHandle} className="flex gap-x-16">
                             <div className="flex flex-col gap-y-5">
-                                <img className="w-40 h-40 rounded" src={`${imgPath}/${data.imagePath}`} alt="Large avatar" />
+                                <img className="w-40 h-40 rounded" src={`${imgPath}/${data.imagePath}`} alt="Avatar" />
                                 <input type="file" accept='jpg/png' onChange={(e) => setImagePath(e.target.files[0])} />
                             </div>
                             <div className="w-[80%]">

@@ -4,9 +4,8 @@ import "./style.scss";
 import logo from "../../assets/icons/logo.svg";
 import { NavLink, Link } from "react-router-dom";
 import { LoginOutlined, UserOutlined, CarryOutOutlined, HeartOutlined, BulbOutlined, FormOutlined, LogoutOutlined } from '@ant-design/icons';
+const imgPath = "http://165.22.110.111:8080";
 
-
-import user from "../../assets/images/user.png";
 import useUser from "../../services/user/useUser";
 
 import emptyCart from "../../assets/images/empty-cart.png"
@@ -63,6 +62,7 @@ const Navbar = () => {
 
     localStorage.setItem("name", info.firstName);
 
+    console.log(info)
     return (
         <div className="h-[80px] bg-white flex items-center">
             <nav className="nav flex items-center justify-between w-full bg-white dark:bg-gray-800 ">
@@ -117,7 +117,7 @@ const Navbar = () => {
                                     profile ?
                                         <div  className="absolute top-[130%] right-[0%] bg-white dark:bg-gray-700 dark:border dark:border-gray-500 rounded-2xl px-4 py-5 w-[280px]">
                                             <div className="flex items-center gap-x-[14px] mb-8">
-                                                <img className="w-[48p] h-[48px] rounded-full object-cover object-center" src={user} alt="user" />
+                                                <img className="w-[48p] h-[48px] rounded-full object-cover object-center" src={`${imgPath}/${info?.imagePath}`} alt="user" />
                                                 <div>
                                                     <h2 className="text-[16px] font-semibold text-[#334155] dark:text-white">{localStorage.getItem("name") ? localStorage.getItem("name") : "User"}</h2>
                                                     <p className="text-medium text-[12px] text-[#334155] dark:text-white">{localStorage.getItem("region") ? localStorage.getItem("region") : "QR | Nukus"}</p>
